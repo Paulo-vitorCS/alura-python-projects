@@ -1,16 +1,21 @@
-# This is a sample Python script.
+import forca
+import adivinhacao
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def escolhe_jogo():
+    print("*********************************")
+    print("*      Escolha o seu jogo!      *")
+    print("*********************************")
 
+    print("[1] Forca \n[2] Adivinhação")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    jogo = int(input("Qual jogo? "))
 
+    if(jogo == 1):
+        print("Jogando forca\n")
+        forca.jogar()
+    elif(jogo == 2):
+        print("Jogando adivinhação\n")
+        adivinhacao.jogar()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if(__name__ == "__main__"):
+    escolhe_jogo()
