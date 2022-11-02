@@ -1,5 +1,6 @@
 import re
 
+
 class ExtratorURL:
     def __init__(self, url):
         self.url = self.sanitiza_url(url)
@@ -44,7 +45,29 @@ class ExtratorURL:
 
         return valor
 
+    def __len__(self):
+        return len(self.url)
 
-extrator_url = ExtratorURL('https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100')
+    def __str__(self):
+        return self.url + '\n' + \
+               'Parâmetros: ' + self.get_url_parametros() + '\n' + \
+               'URL Base: ' + self.get_url_base()
+
+    # Mudando o comportamento do __eq__, que inicialmente compara a igualdade entre os endereços de memória dos objetos
+    def __eq__(self, other):
+        return self.url == other.url
+
+
+url_teste = 'https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100'
+extrator_url = ExtratorURL(url_teste)
+extrator_url_2 = ExtratorURL(url_teste)
+
+print('Tamanho da URL:', len(extrator_url))
+print(extrator_url, '\n')
+
+print(extrator_url == extrator_url_2)
+print(id(extrator_url))
+print(id(extrator_url_2))
+
 valor_quantidade = extrator_url.get_valor_parametro('Origem')
-print(valor_quantidade)
+print('\n', valor_quantidade)
