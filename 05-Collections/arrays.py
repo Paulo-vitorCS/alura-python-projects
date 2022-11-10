@@ -41,3 +41,10 @@ print()
 
 for nome, _, _ in usuarios:  # Desempacotando nome e ignorando o resto
     print(nome, end='\t')
+
+print('\n')
+print(f'Lista ordenada: {sorted(idades)}')
+print(f'Lista reversa: {list(reversed(idades))} \n')
+
+# A lista pode ser ordenada 'in place' utilizando idades.sort()
+# Ou seja, a lista passa a ser ordenada definitivamente
