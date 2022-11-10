@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from operator import attrgetter  # Função para acesso de atributos
 
 
 class Conta(metaclass=ABCMeta):  # Definindo a classe como abstrata
@@ -18,6 +19,11 @@ class Conta(metaclass=ABCMeta):  # Definindo a classe como abstrata
 
     def __eq__(self, other):  # Método para comparar a igualdade entre objetos, utilizando algum atributo.
         return self._codigo == other._codigo and self._saldo == other._saldo and type(self) == type(other)
+
+    def __lt__(self, other):  # less then (menor que)
+        if self._saldo != other._saldo:  # Caso os saldos sejam diferentes, compara o saldo
+            return self._saldo < other._saldo
+        return self._codigo < other._codigo  # Caso os saldos sejam iguais, compara o código
 
 
 class ContaCorrente(Conta):
@@ -63,4 +69,39 @@ conta02 = ContaCorrente(101)
 conta03 = ContaPoupanca(101)
 
 print(conta01 == conta02)  # Comparação retorna true por causa do método __eq__
-print(conta01 == conta03)
+print(conta01 == conta03, '\n')
+
+conta_guilherme = ContaCorrente(18)
+conta_guilherme.depositar(500)
+
+conta_daniela = ContaCorrente(19)
+conta_daniela.depositar(1000)
+
+conta_paulo = ContaCorrente(20)
+conta_paulo.depositar(750)
+
+contas = [conta_guilherme, conta_daniela, conta_paulo]
+
+for conta in contas:
+    print(conta)
+
+print()
+
+# Caso o método __lt__ não tenha sido implementado:
+# Ordena os objetos através do atributo saldo, utilizando attrgetter
+for conta in sorted(contas, key=attrgetter('_saldo')):
+    print(conta)
+
+conta_guilherme.depositar(500)
+conta_paulo.depositar(250)
+print()
+
+# Caso o método __lt__ não tenha sido implementado:
+# Ordena os objetos através do atributo saldo, depois pelo código, utilizando attrgetter
+for conta in sorted(contas, key=attrgetter('_saldo', '_codigo')):
+    print(conta)
+
+print()
+
+# Comparando objetos (implementado na função __lt__):
+print(conta_guilherme < conta_paulo)

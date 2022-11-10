@@ -47,4 +47,4 @@ print(f'Lista ordenada: {sorted(idades)}')
 print(f'Lista reversa: {list(reversed(idades))} \n')
 
 # A lista pode ser ordenada 'in place' utilizando idades.sort()
-# Ou seja, a lista passa a ser ordenada definitivamente
+# Ou seja, a lista original passa a ser ordenada definitivamente
