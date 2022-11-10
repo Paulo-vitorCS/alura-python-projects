@@ -16,6 +16,9 @@ class Conta(metaclass=ABCMeta):  # Definindo a classe como abstrata
     def __str__(self):
         return '[Código: {} | Saldo: R$ {:.2f}]'.format(self._codigo, self._saldo)
 
+    def __eq__(self, other):  # Método para comparar a igualdade entre objetos, utilizando algum atributo.
+        return self._codigo == other._codigo and self._saldo == other._saldo and type(self) == type(other)
+
 
 class ContaCorrente(Conta):
     def taxa_conta(self):
@@ -54,3 +57,10 @@ contas = [conta16, conta17]
 for conta in contas:
     conta.taxa_conta()
     print(conta)
+
+conta01 = ContaCorrente(101)
+conta02 = ContaCorrente(101)
+conta03 = ContaPoupanca(101)
+
+print(conta01 == conta02)  # Comparação retorna true por causa do método __eq__
+print(conta01 == conta03)
