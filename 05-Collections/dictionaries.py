@@ -37,3 +37,43 @@ for item in produtos.items():
 
 for chave, valor in produtos.items():
     print(f'Chave: {chave} | Valor: {valor}')
+
+print()
+# -------------------------------------------------------------------------
+# Contar aparições de palavras em um texto:
+texto = 'Hello world Hello world Hello world hello world'
+texto = texto.lower()
+
+palavras = {}
+
+for palavra in texto.split():  # Dividindo as palavras pelo espaço
+    cont = palavras.get(palavra, 0)
+    palavras[palavra] = cont + 1
+
+print(palavras)
+
+# Usando default dict:
+from collections import defaultdict, Counter
+
+palavras2 = defaultdict(int)
+for palavra in texto.split():  # Dividindo as palavras pelo espaço
+    palavras2[palavra] += 1
+
+print(palavras2)
+
+# Usando counter
+palavras3 = Counter(texto.split())
+print(palavras3, '\n')
+
+
+
+# -------------------------------------------------------------------------
+class Conta:
+    def __init__(self):
+        print('Imprimindo uma conta')
+
+
+# Criando uma nova conta com default dict
+contas = defaultdict(Conta)
+contas[15]
+contas[17]
