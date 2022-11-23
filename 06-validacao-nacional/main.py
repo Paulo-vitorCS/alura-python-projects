@@ -1,5 +1,9 @@
-from cpf import Cpf
+from cpf_cnpj import CpfCnpj
 
-cpf = '08694694603'
-objeto_cpf = Cpf(cpf)
+cpf = '32007832062'
+objeto_cpf = CpfCnpj(cpf, 'cpf')
 print(objeto_cpf)
+
+cnpj = '35379838000112'
+objeto_cnpj = CpfCnpj(cnpj, 'cnpj')
+print(objeto_cnpj)
