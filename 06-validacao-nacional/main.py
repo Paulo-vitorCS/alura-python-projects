@@ -1,6 +1,7 @@
 from cpf_cnpj import Documento
 from telefoneBr import TelefonesBr
 from datas_br import DatasBr
+from acesso_cep import BuscaEndereco
 
 cpf = '32007832062'
 exemplo_cpf = Documento.criar_documento(cpf)
@@ -17,4 +18,10 @@ print(telefone_objeto, '\n')
 # ------------------------------------------------------
 
 cadastro = DatasBr()
-print(cadastro.tempo_cadastro())
+print(cadastro.tempo_cadastro(), '\n')
+# ------------------------------------------------------
+
+cep = '01001000'
+objeto_cep = BuscaEndereco(cep)
+bairro, cidade, uf = objeto_cep.acessa_via_cep()
+print(bairro, cidade, uf)
