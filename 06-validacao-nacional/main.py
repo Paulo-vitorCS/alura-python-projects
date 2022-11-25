@@ -1,5 +1,6 @@
 from cpf_cnpj import Documento
 from telefoneBr import TelefonesBr
+from datas_br import DatasBr
 
 cpf = '32007832062'
 exemplo_cpf = Documento.criar_documento(cpf)
@@ -12,4 +13,8 @@ print(exemplo_cnpj, '\n')
 
 telefone = '552126451234'
 telefone_objeto = TelefonesBr(telefone)
-print(telefone_objeto)
+print(telefone_objeto, '\n')
+# ------------------------------------------------------
+
+cadastro = DatasBr()
+print(cadastro.tempo_cadastro())
