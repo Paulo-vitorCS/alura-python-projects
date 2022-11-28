@@ -1,7 +1,12 @@
 import pytest
-from bytebank import Funcionario
+from codigo.bytebank import Funcionario
 from pytest import mark
 # Ciclo TDD: Testes -> Código -> Refatoração -> Testes ...
+# Cobertura de teste:
+#   - Usa pacote pytest-cov
+#   - Comando em local especifico: pytest --cov=bytebank
+#   - Verificando os 'missing tests': pytest --cov=bytebank --cov-report term-missing   OU
+#   - pytest --cov=bytebank --cov-report html   | Isso gera um arquivo htmlcov, com um index.html
 
 
 class TestClass:
@@ -58,3 +63,14 @@ class TestClass:
             resultado = funcionario_teste.calcular_bonus()  # When
 
             assert resultado  # Then
+
+    # Esse é um teste que não precisa ser feito por se tratar de algo 'específico' da linguagem
+    # Cria-se um arquivo .coveragerc e retiro linhas desnecessárias para teste
+    # def test_retorno_str(self):
+    #     nome, data_nascimento, salario = 'Teste', '12/03/2000', 1000  # Given
+    #     esperado = 'Funcionario(Teste, 12/03/2000, 1000)'
+    #
+    #     funcionario_teste = Funcionario(nome, data_nascimento, salario)
+    #     resultado = funcionario_teste.__str__()  # When
+    #
+    #     assert resultado == esperado  # Then
